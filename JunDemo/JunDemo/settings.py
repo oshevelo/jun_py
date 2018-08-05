@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '@!g6#b=zgot7uj%b=j-=w9hcei5#2lkjp@*t#=ohd@a#kr71cf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -73,10 +73,17 @@ WSGI_APPLICATION = 'JunDemo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
+DATABASES ={
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'HOST': 'localhost',
+        'NAME': 'jun_demo',
+        'USER': 'ad6',
+        'PASSWORD': 'ad6',
+        'OPTIONS': {
+            'options': '-c search_path=public,ss_struct',
+            'client_encoding': 'UTF8'
+        }
     }
 }
 
