@@ -2,7 +2,7 @@ import logging
 
 from django.conf import settings
 from django.contrib.auth import login, logout, authenticate
-
+from rest_framework import status
 from django.contrib.auth.models import User
 
 from django.http import HttpResponseRedirect, Http404, HttpResponse
@@ -28,13 +28,14 @@ class FakeLogin(generics.RetrieveAPIView):
         if not user:
             return HttpResponse("User not found", status=404)
         '''
+        print('in fake')
         user = authenticate(
             username=request.query_params.get('username'), 
             password=request.query_params.get('password')
         )
         print(user)
         if not user:
-            return HttpResponse("Wrong password", status=404)
+            return HttpResponse("User not found", status=404)
         login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         return HttpResponseRedirect('/')
 
