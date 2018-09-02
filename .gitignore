@@ -1,0 +1,23 @@
+*~
+.idea/*
+env/
+*.pyc
+project/local.py
+ansible/*.retry
+
+# media files
+static/upload/*
+!static/upload/git.txt
+
+# media files directory used for tests
+static/test_upload/*
+!static/test_upload/git.txt
+
+static/admin/*
+static/guardian/*
+static/mptt/*
+static/rest_framework/*
+static/serve/*
+statis/build.txt
+
+docs/_build/*
